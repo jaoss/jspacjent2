@@ -1,0 +1,25 @@
+#---------------------------------------
+# ignoruj w projekcie JPacjent2
+#---------------------------------------
+
+# katalogi
+
+.settings/
+target/
+
+#pliki
+
+# /.gitignore
+/.springBeans
+/.project
+/.classpath
+/jspacjent.*
+/jspacjent2.*
+/manifest
+/nb-configuration.xml
+/nbactions.xml
+
+
+
+
+

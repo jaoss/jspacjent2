@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+     xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation=
+       "http://maven.apache.org/POM/4.0.0 
+       http://maven.apache.org/maven-v4_0_0.xsd">
+       
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!--
+	<parent>
+		<groupId></groupId>
+		<artifactId></artifactId>
+		<version></version>
+	</parent>
+	-->
+  
+  <repositories>
+  <!--These are needed for Swing/Netbeans -->
+    <repository>
+       <id>maven2-repository.netbeans.maven2</id>
+       <name>Netbeans Maven Repository</name>
+       <url>http://bits.netbeans.org/maven2/</url>
+       <layout>default</layout>
+    </repository>  
+  </repositories>
+
+  <artifactId>jspacjent2</artifactId>
+  <groupId>pl.jasox</groupId>
+	<name>JSPacjent2</name>
+  <version>0.0.1</version>
+	<packaging>jar</packaging>
+  
+  <properties>		
+		<!--
+    <projectGroup>jspacjent2</projectGroup> 
+		<projectName>JSPacjent2</projectName>
+		<projectVersion>0.0.0</projectVersion>
+    -->
+		<projectScope>compile</projectScope>
+		
+		<tomcat.home>${env.CATALINA_HOME}</tomcat.home>    
+    <jboss.home>${env.JBOSS_HOME}</jboss.home>
+		<jboss.context>default</jboss.context>				
+		
+		<environment.properties>environment/dev</environment.properties>
+		<environment.debug>true</environment.debug>		
+		
+	</properties>
+
+	<dependencies>
+    
+    <dependency>
+       <groupId>org.swinglabs</groupId>
+       <artifactId>swing-layout</artifactId>
+       <version>1.0.3</version>       
+    </dependency>
+    
+    <dependency>
+      <groupId>org.netbeans.external</groupId>
+      <artifactId>AbsoluteLayout</artifactId>
+      <version>RELEASE68</version>          
+    </dependency>
+    
+    <dependency>
+	     <groupId>org.springframework</groupId>
+	     <artifactId>spring</artifactId>
+     	 <version>1.2.4</version>       
+    </dependency>
+    
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-mock</artifactId>
+	    <version>1.2.4</version>      
+    </dependency> 
+    
+    <!--  
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-hibernate</artifactId>
+	    <version>1.2.4</version>      
+    </dependency>  
+    -->
+                    
+    <!--  
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>	
+			<scope>${projectScope}</scope>						
+		</dependency>		
+      
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+			<scope>${projectScope}</scope>						
+		</dependency>
+				
+		<dependency>    
+      <groupId>com.sun.mail</groupId>    
+      <artifactId>javax.mail</artifactId>    
+      <version>1.4.5</version>
+      <scope>${projectScope}</scope>
+    </dependency>
+    -->
+    
+    <!-- HSQL database driver -->
+	  <dependency> 
+	    <groupId>org.hsqldb</groupId>  
+	    <artifactId>hsqldb</artifactId>  
+	    <version>1.8.0.7</version>
+	    <scope>runtime</scope> 
+	  </dependency>
+    
+    <!-- MySQL database driver -->
+    <dependency>
+		 <groupId>mysql</groupId> 
+		 <artifactId>mysql-connector-java</artifactId> 
+		 <version>5.1.5</version>  
+		 <scope>runtime</scope>
+    </dependency>     
+    
+     <!-- c3p0 connection management -->
+    <dependency> 
+      <groupId>c3p0</groupId> 
+      <artifactId>c3p0</artifactId> 
+      <version>0.9.1.2</version> 
+      <scope>runtime</scope>
+    </dependency>
+    
+    <!-- p6spy connection management -->
+    <dependency>
+	    <groupId>p6spy</groupId>
+	    <artifactId>p6spy</artifactId>
+	    <version>1.3</version>
+      <scope>runtime</scope>
+    </dependency>            
+          
+     <!-- DBCP connection management --> 
+    <dependency>
+	    <groupId>commons-dbcp</groupId>
+	    <artifactId>commons-dbcp</artifactId>
+	    <version>1.2.2</version>
+      <scope>runtime</scope>
+    </dependency>          
+    
+    <!-- 
+		<dependency>
+			<groupId>org.jboss.seam</groupId>
+			<artifactId>jboss-seam</artifactId>
+			<version>${seamVersion}</version>			
+			<exclusions>
+				<exclusion>
+					<groupId>javax.el</groupId>
+					<artifactId>el-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.jboss.seam</groupId>
+					<artifactId>jboss-seam-pdf</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.facelets</groupId>
+					<artifactId>jsf-facelets</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>		
+		
+		<dependency>     
+		  <groupId>javassist</groupId>     
+		  <artifactId>javassist</artifactId>     
+		  <version>3.5.0.GA</version> 
+		</dependency> 		
+		-->
+    
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.0.5</version>			
+			<scope>${projectScope}</scope>
+		</dependency>
+		
+    <!--
+		<dependency>     
+		  <groupId>org.hibernate</groupId>     
+		  <artifactId>hibernate-c3p0</artifactId>     
+		  <version>3.0.5</version> 
+		  <scope>${projectScope}</scope>
+		</dependency>	
+    
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>3.0.5</version>			
+			<scope>${projectScope}</scope>
+		</dependency>
+    
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.0.5</version>			
+			<scope>${projectScope}</scope>
+		</dependency>
+		
+		<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-commons-annotations</artifactId>
+    	<version>3.0.5</version>    	
+    	<scope>${projectScope}</scope>
+		</dependency>
+    -->
+		
+		<dependency> 
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jcl</artifactId>
+      <version>1.5.2</version>
+      <scope>${projectScope}</scope>
+    </dependency>
+    
+    <dependency>          
+      <groupId>log4j</groupId>          
+      <artifactId>log4j</artifactId>          
+      <version>1.2.12</version>                    
+    </dependency>
+    
+    <!-- Commons -->
+    <!--
+    <dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.7.0</version>			
+			<scope>${projectScope}</scope>	
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>			
+			<scope>${projectScope}</scope>	
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>			
+			<scope>${projectScope}</scope>	
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>			
+			<scope>${projectScope}</scope>	
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.1</version>			
+			<scope>${projectScope}</scope>	
+		</dependency>
+    
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.8.1</version>			
+			<scope>${projectScope}</scope>	
+		</dependency>		
+		
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>			
+			<scope>${projectScope}</scope>	
+		</dependency>
+    -->
+    
+	</dependencies>
+
+	<build>
+	
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>			 
+      <resource> 
+        <directory>src/main/java</directory> 
+        <includes> 
+          <include>**/*.xml</include> 
+          <include>**/*.properties</include>
+        </includes> 
+      </resource>				
+		</resources>
+
+		<plugins>      
+		
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>		
+        <version>2.6</version>		
+				<executions>
+				  <execution>
+					<id>copy-resources</id>
+					<!-- here the phase you need -->
+					<phase>validate</phase>
+					<goals>
+						<goal>copy-resources</goal>
+					</goals>
+					<configuration>
+						<outputDirectory>${project.build.directory}/classes</outputDirectory>						 
+						<resources>
+						<!--	-->	
+						</resources>
+						<encoding>UTF-8</encoding>						
+					</configuration>
+				  </execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+         <source>1.5</source>
+         <target>1.5</target>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>              
+              <addClasspath>false</addClasspath>
+							<mainClass>okl.jspacjent.guiswing.JPacjentMDIApplication</mainClass>
+						</manifest>
+					</archive>
+				</configuration>        
+			</plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version> 
+          <executions>
+            <execution>
+               <goals>
+                 <goal>attached</goal>
+               </goals>
+               <phase>package</phase>
+               <configuration>
+                 <descriptorRefs>
+                   <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <archive>
+                  <manifest>
+                    <mainClass>okl.jspacjent.guiswing.JPacjentMDIApplication</mainClass>
+                  </manifest>
+                </archive>
+              </configuration>
+           </execution>
+        </executions>              
+      </plugin>
+      
+		</plugins>
+		
+	</build>
+	
+		
+</project>
