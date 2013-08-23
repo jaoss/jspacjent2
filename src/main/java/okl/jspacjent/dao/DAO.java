@@ -10,7 +10,7 @@ import okl.jspacjent.model.*;
  *
  * Implementation: <br/>
  *
- * @author janusz.swol@lot.pl
+ * @author janusz.swol@gmail.pl
  */
 public interface DAO {
   
