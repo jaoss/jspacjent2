@@ -123,6 +123,7 @@
       <scope>runtime</scope>
     </dependency>     
     
+    <!-- Hibernate reference --> 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate</artifactId>
