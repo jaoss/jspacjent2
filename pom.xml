@@ -50,7 +50,8 @@
 	</properties>
 
 	<dependencies>
-    
+	    
+    <!-- Swing reference --> 
     <dependency>
        <groupId>org.swinglabs</groupId>
        <artifactId>swing-layout</artifactId>
@@ -63,6 +64,7 @@
       <version>RELEASE68</version>          
     </dependency>
     
+    <!-- Spring reference --> 
     <dependency>
 	     <groupId>org.springframework</groupId>
 	     <artifactId>spring</artifactId>
@@ -153,10 +155,6 @@
       <version>1.2.12</version>                    
     </dependency>
     
-    <!-- Commons -->
-    <!--
-    
-    -->
     
 	</dependencies>
 
@@ -211,8 +209,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-         <source>1.5</source>
-         <target>1.5</target>
+         <source>1.6</source>
+         <target>1.6</target>
         </configuration>
       </plugin>
       
