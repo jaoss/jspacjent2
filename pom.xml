@@ -256,5 +256,56 @@
 		
 	</build>
 	
+	<scm>
+		<connection>scm:git:git://github.com/jaoss/jspacjent2.git</connection>
+		<developerConnection>
+        scm:git:git@github.com:jaoss/jspacjent2.git
+    </developerConnection>
+		<url>http://github.com/jaoss/jspacjent2</url>
+	</scm>
+	
+	<developers>
+
+		<developer>
+			<id>jaoss</id>
+			<name>Jan Osowski</name>
+			<email>jan.osowski@gmail.com</email>
+			<url></url>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+			<roles>
+			  <role></role>
+			  <role></role>
+			</roles>
+			<timezone></timezone>
+			<properties>
+			  <picUrl></picUrl>
+			</properties>
+		</developer>
+		
+		<developer>
+			<id>jasox</id>
+			<name>Janusz Janowski</name>
+			<email>jasox@gazeta.pl</email>
+			<url></url>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+			<roles>
+			  <role></role>
+			  <role></role>
+			</roles>
+			<timezone></timezone>
+			<properties>
+			  <picUrl></picUrl>
+			</properties>
+		</developer>
+
+  </developers>
+  
+	<issueManagement>
+    <system>Bugzilla</system>
+    <url>http://www.bugheaven.com/bugzilla/jasox/</url>
+  </issueManagement>
+	
 		
 </project>
