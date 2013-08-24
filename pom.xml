@@ -38,15 +38,8 @@
 		<projectName>JSPacjent2</projectName>
 		<projectVersion>0.0.0</projectVersion>
     -->
-		<projectScope>compile</projectScope>
-		
-		<tomcat.home>${env.CATALINA_HOME}</tomcat.home>    
-    <jboss.home>${env.JBOSS_HOME}</jboss.home>
-		<jboss.context>default</jboss.context>				
-		
-		<environment.properties>environment/dev</environment.properties>
-		<environment.debug>true</environment.debug>		
-		
+		<projectScope>compile</projectScope>		
+			
 	</properties>
 
 	<dependencies>
@@ -274,10 +267,10 @@
 			<organization></organization>
 			<organizationUrl></organizationUrl>
 			<roles>
-			  <role></role>
-			  <role></role>
+			  <role>Developer</role>
+			  <role>Architect</role>
 			</roles>
-			<timezone></timezone>
+			<timezone>-1</timezone>
 			<properties>
 			  <picUrl></picUrl>
 			</properties>
@@ -291,10 +284,10 @@
 			<organization></organization>
 			<organizationUrl></organizationUrl>
 			<roles>
-			  <role></role>
-			  <role></role>
+			  <role>Developer</role>
+			  <role>Architect</role>
 			</roles>
-			<timezone></timezone>
+			<timezone>-1</timezone>
 			<properties>
 			  <picUrl></picUrl>
 			</properties>
