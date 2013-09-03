@@ -3,15 +3,14 @@
 "-//SPRING//DTD BEAN//EN" 
 "http://www.springframework.org/dtd/spring-beans.dtd">
 
-<beans>  
+<beans>
 
   <bean
     id="propertyConfigurer"
     class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">
       <list>
-        <value>jdbc.properties</value>
-        <value>application.properties</value>
+        <value>test_jdbc.properties</value>
       </list>
     </property>
   </bean>
@@ -46,7 +45,7 @@
   </bean>
   -->
 
-  <!-- The P6Spy DataSource 
+  <!-- The P6Spy DataSource -->
   <bean
     id="jspacjentDataSource"
     class="com.p6spy.engine.spy.P6DataSource">
@@ -69,11 +68,11 @@
       </bean>
     </constructor-arg>
   </bean>
-  -->    
+      
   
-  <!--  The c3p0 DataSource -->
+  <!--  The c3p0 DataSource 
   <bean
-    id="jspacjentDataSource"
+    id="c3p0DataSource"
     class="com.mchange.v2.c3p0.ComboPooledDataSource">
     <property name="driverClass">
       <value>${jdbc.driverClassName}</value>
@@ -107,7 +106,7 @@
       <value>10</value>
     </property>
     <property name="minPoolSize">
-      <value>1</value>
+      <value>2</value>
     </property>
     <property name="maxStatements">
       <value>100</value>
@@ -116,7 +115,7 @@
       <value>5</value>
     </property>
   </bean>
-  
+  -->
 
   <!-- Hibernate Session Factory Bean -->
   <bean
@@ -159,7 +158,7 @@
   </bean>
   
 
-  <!-- The transaction manager to use for regular non JTA datasource -->
+  <!-- The transactionmanager to use for regular non JTA datasource -->
   <bean
     id="transactionManager"
     class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -179,21 +178,6 @@
     <constructor-arg>
       <ref local="sessionFactory" />
     </constructor-arg>
-  </bean>
-  
-  <!-- The utility class for this application -->
-  <bean
-    id="utilities"
-    class="okl.jspacjent.utility.Utilities">
-    <property name="pathToApplication">
-      <value>${app.pathToApplication}</value>
-    </property>
-    <property name="pathToViewer">
-      <value>${app.pathToViewer}</value>      
-    </property>
-    <property name="pathToData">
-      <value>${app.pathToData}</value>      
-    </property>
   </bean>
 
 </beans>
