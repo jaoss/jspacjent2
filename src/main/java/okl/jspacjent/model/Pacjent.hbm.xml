@@ -8,7 +8,7 @@
   <class
     name="okl.jspacjent.model.Pacjent"
     table="PACJENT"
-    schema="PUBLIC">
+    >
     <id
       name="idPacj"
       type="long"

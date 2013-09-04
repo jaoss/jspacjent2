@@ -372,6 +372,36 @@
     <system>Bugzilla</system>
     <url>http://www.bugheaven.com/bugzilla/jasox/</url>
   </issueManagement>
-	
-		
+  
+	<profiles>
+	  <profile>
+			  <!-- MySQL runs on the same workstation -->
+				<id>local_MySQL</id>	
+				<activation>
+           <activeByDefault>true</activeByDefault>
+        </activation>		
+	      <properties>				
+					<dbName>MySQL</dbName> 
+					<dbHost>localhost</dbHost>
+			    <dbUser>jasox</dbUser>
+			    <dbSchema>jspacjent</dbSchema>
+			    <dbPassword>jasox</dbPassword>					
+				</properties>		
+		 </profile>
+			
+		 <profile>
+			  <!-- MySQL runs on remote server CloudBees on AWS -->
+				<id>aws_MySQL</id>			
+	      <properties>
+	        <dbName>MySQL</dbName> 
+					<dbHost>ec2-50-19-213-178.compute-1.amazonaws.com</dbHost>
+			    <dbUser>jasox</dbUser>
+			    <dbSchema>jasox-mysql</dbSchema>
+			    <dbPassword>jasox-01</dbPassword>							
+				</properties>			
+		 </profile>
+	 
+	 </profiles>
+	 
+	 		
 </project>

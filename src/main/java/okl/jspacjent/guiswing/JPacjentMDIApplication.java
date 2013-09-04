@@ -304,7 +304,7 @@ public class JPacjentMDIApplication extends javax.swing.JFrame {
       JOptionPane.showMessageDialog(
         null,
         "K³opoty z po³aczeniem z baz¹ danych.\n" +
-        " Prawdopodobnie nie dzia³a serwer HSQLDB" + s, 
+        " Prawdopodobnie nie dzia³a serwer" + s, 
         "B³¹d!", JOptionPane.ERROR_MESSAGE );
       // ... 
       System.exit(0);        
@@ -376,7 +376,7 @@ public class JPacjentMDIApplication extends javax.swing.JFrame {
     });
 
     fileMenu.add(exitMenuItem);
-
+    /*
     exitarchMenuItem.setText(" Archiwizacja danych i Wyj\u015bcie");
     exitarchMenuItem.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,7 +385,7 @@ public class JPacjentMDIApplication extends javax.swing.JFrame {
     });
 
     fileMenu.add(exitarchMenuItem);
-
+    */
     menuBar.add(fileMenu);
 
     przyjecieMenu.setText("Przyj\u0119cia pacjent\u00f3w");
@@ -566,18 +566,28 @@ public class JPacjentMDIApplication extends javax.swing.JFrame {
 
   private void doprozItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doprozItemActionPerformed
     // ...
+	/*
     getDao().dopiszRozpoznania();
     JOptionPane.showMessageDialog(
       null, "Dopisanie rozpoznañ dokonane.\n", 
       "Info", JOptionPane.INFORMATION_MESSAGE );
+    */
+	JOptionPane.showMessageDialog(
+	  null, "Dopisanie rozpoznañ nie mo¿e byæ dokonane.\n", 
+	  "Info", JOptionPane.INFORMATION_MESSAGE );  
   }//GEN-LAST:event_doprozItemActionPerformed
 
   private void dopskierItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dopskierItemActionPerformed
     // ...
+	/*
     getDao().dopiszSkierowania();
     JOptionPane.showMessageDialog(
       null, "Dopisanie skierowañ dokonane.\n", 
       "Info", JOptionPane.INFORMATION_MESSAGE );
+    */ 
+	JOptionPane.showMessageDialog(
+	  null, "Dopisanie skierowañ nie mo¿e byæ dokonane.\n", 
+	  "Info", JOptionPane.INFORMATION_MESSAGE );
   }//GEN-LAST:event_dopskierItemActionPerformed
 
   private void rapMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rapMenuItemActionPerformed
@@ -683,13 +693,14 @@ public class JPacjentMDIApplication extends javax.swing.JFrame {
     updateComponents();
     JOptionPane.showMessageDialog(
             null,"" +
-                 " rights jpasic@wp.pl \n" +
-                 " author j.swol@lot.pl \n" +
+                 " rights \n" +
+                 " author janusz.swol@gmail.com \n" +
                  " uses \n" +
                  "      Java5SE \n" +
                  "      org.hibernate \n" + 
                  "      org.springframework \n" +
-                 "      org.hsqldb \n" +
+                 "      Hsqldb \n" +
+                 "      MySQL \n" +
                  "", 
             "Program info", JOptionPane.INFORMATION_MESSAGE ); 
   }//GEN-LAST:event_aboutMenuItemActionPerformed

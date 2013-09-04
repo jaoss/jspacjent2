@@ -8,7 +8,7 @@
   <class
     name="okl.jspacjent.model.Skierow"
     table="SKIEROW"
-    schema="PUBLIC">
+    >
     <id
       name="idSkier"
       type="long"

@@ -8,7 +8,7 @@
   <class
     name="okl.jspacjent.model.Kasach"
     table="KASACH"
-    schema="PUBLIC">
+    >
     <id
       name="idKasa"
       type="long"

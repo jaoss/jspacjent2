@@ -8,7 +8,7 @@
   <class
     name="okl.jspacjent.model.Rozpoznanie"
     table="ROZPOZNANIE"
-    schema="PUBLIC">
+    >
     <id
       name="idRozp"
       type="long"
