@@ -376,10 +376,7 @@
 	<profiles>
 	  <profile>
 			  <!-- MySQL runs on the same workstation -->
-				<id>local_MySQL</id>	
-				<activation>
-           <activeByDefault>true</activeByDefault>
-        </activation>		
+				<id>local_MySQL</id>						
 	      <properties>				
 					<dbName>MySQL</dbName> 
 					<dbHost>localhost</dbHost>
