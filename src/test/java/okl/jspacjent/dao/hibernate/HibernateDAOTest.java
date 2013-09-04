@@ -1,5 +1,8 @@
 package okl.jspacjent.dao.hibernate;
 
+import java.io.File;
+import java.io.IOException;
+
 import okl.jspacjent.dao.*;
 import org.springframework.context.support.*;
 
@@ -16,7 +19,7 @@ public class HibernateDAOTest extends AbstractDAOTest {
   }
 
   @Override
-  protected DAO createDao() {
+  protected DAO createDao(){	  
     System.out.println(" ...Config locations : " + getConfigLocations()[0]);
     applicationContext =
       new ClassPathXmlApplicationContext( getConfigLocations() );
@@ -31,7 +34,7 @@ public class HibernateDAOTest extends AbstractDAOTest {
   }
 
   @Override
-  protected void beforeAssertions() {
+  protected void beforeAssertions() {	  
     if ( dao == null ) {
       dao = createDao();
     }
@@ -62,8 +65,9 @@ public class HibernateDAOTest extends AbstractDAOTest {
     */
   }
 
-  public void testPacjent() {
+  public void testPacjent() throws IOException {
    
+	System.out.println( "    Canonical application path : " + new File(".").getCanonicalPath() );
     beforeAssertions();
     /*
     // ...

@@ -38,11 +38,53 @@
 		<projectName>JSPacjent2</projectName>
 		<projectVersion>0.0.0</projectVersion>
     -->
-		<projectScope>compile</projectScope>		
+		<projectScope>compile</projectScope>
+		<surefire.version>2.13</surefire.version>		
 			
 	</properties>
 
 	<dependencies>
+	
+	  <!-- 
+    Mixing JUnit and TestNG in one module can be done just by adding both  
+    as a plugin dependencies (not only as project dependencies): 
+	  -->
+	  <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8</version>
+      <scope>test</scope>
+    </dependency>
+	  
+	
+	  <dependency>
+       <groupId>org.hamcrest</groupId>
+       <artifactId>hamcrest-all</artifactId>
+       <version>1.1</version>
+       <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>3.2</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>1.9.5</version>
+      <scope>test</scope>
+    </dependency>
+
 	    
     <!-- Swing reference --> 
     <dependency>
@@ -146,7 +188,8 @@
       <groupId>log4j</groupId>          
       <artifactId>log4j</artifactId>          
       <version>1.2.12</version>                    
-    </dependency>    
+    </dependency>
+    
     
 	</dependencies>
 
@@ -165,6 +208,7 @@
         </includes> 
       </resource>				
 		</resources>
+
 
 		<plugins>      
 		
@@ -189,13 +233,41 @@
 				  </execution>
 				</executions>
 			</plugin>
-
+			
+			<!--@author : Marcin Zajączkowski
+          How to use TestNG with JUnit together? 
+          TestNG has a few features which are unavailable or less flexible in JUnit 
+          (just to mention a few: dependencies between tests and groups of tests 
+          (irreplaceable for integration tests with long startup), parametrized tests, 
+          concurrent execution or per suite/group/class init/shutdown operations). 
+          Therefore it is tempting to migrate existing tests from JUnit to TestNG. 
+          Having large code base it could be not so easy to migrate all of them at once 
+          and presented configuration allows to write the new tests in TestNG and rewrite 
+          the old tests when appropriate.
+          Btw, it is worth to mention that thanks to the fact TestNG generates reports also in 
+          the JUnit’s XML format all the tools compatible with JUnit (Jenkins, Sonar, …) 
+          will merge test results from JUnit and TestNG and display all of them properly. -->        
+      
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.4</version>
-			</plugin>
-      
+				<version>${surefire.version}</version>
+        <dependencies>
+          <dependency>
+              <groupId>org.apache.maven.surefire</groupId>
+              <artifactId>surefire-junit47</artifactId>
+              <version>${surefire.version}</version>
+          </dependency>
+          <!--  
+          <dependency>
+              <groupId>org.apache.maven.surefire</groupId>
+              <artifactId>surefire-testng</artifactId>
+              <version>${surefire.version}</version>
+          </dependency>
+          -->
+        </dependencies>
+			</plugin>			
+		    
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -220,6 +292,7 @@
 				</configuration>        
 			</plugin>
       
+      <!--  
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -243,6 +316,7 @@
            </execution>
         </executions>              
       </plugin>
+      -->
       
 		</plugins>
 		
