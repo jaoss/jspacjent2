@@ -78,7 +78,7 @@ INSERT INTO PACJENT VALUES(121,70051906213,'Ireneusz','Bolesta-Czachor',37.0E0,'
 INSERT INTO PACJENT VALUES(122,65042513333,'Bo\u017cena','Czarna',42.0E0,'00-879 Warszawa, \u017belazna 9/22','','844 13 11 Mama Anna',2,'')
 INSERT INTO PACJENT VALUES(123,48021200666,'Alicja','Domaga',59.0E0,'02-875 Warszawa, ul. Kobzy 123','','609 142 555 Eliza',2,'')
 INSERT INTO PACJENT VALUES(124,57041116666,'Henryk','Kowalski',50.0E0,'08-430 \u017belech\u00f3w, ul. Traugutta 22','','022-755 11 55 Zbigniew',2,'')
-INSERT INTO PACJENT VALUES(125,53022013439,'W\u0142adys\u0142aw','Lis',54.0E0,'W\u00f3lka Radzymi\u0144ska, ul. Szkolna 10','','',2,'')
+INSERT INTO PACJENT VALUES(125,53022013333,'W\u0142adys\u0142aw','Lisowski',54.0E0,'W\u00f3lka Radzymi\u0144ska, ul. Szkolna 100','','',2,'')
 INSERT INTO PACJENT VALUES(126,35112101777,'Edward','Olszewik',72.0E0,'03-226 Warszawa, ul. Toru\u0144ska 52/52','','555 125 544 syn Pawe\u0142',2,'')
 INSERT INTO PACJENT VALUES(127,39010108888,'Barbara','Nowici\u0144ska',68.0E0,'Warszawa, Zwierzyniecka 1/54','','',2,'')
 INSERT INTO PACJENT VALUES(129,40111101234,'J\u00f3zefina','Fr\u0105czak',67.0E0,'Legionowo, Sowi\u0144skiego 122/321','','622 823 528  Beata',2,'')
