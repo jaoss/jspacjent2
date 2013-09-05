@@ -27,7 +27,7 @@ import org.springframework.test.*;
  */
 public abstract class AbstractDAOTest extends AbstractTransactionalDataSourceSpringContextTests {
 
-  // the daoFactory to be tested.
+  // the dao to be tested.
   protected DAO dao;  
   
   /**

@@ -4,13 +4,17 @@ import java.io.File;
 import java.io.IOException;
 
 import okl.jspacjent.dao.*;
+import okl.jspacjent.utility.Md5HashCode;
+
+import org.junit.Ignore;
 import org.springframework.context.support.*;
 
 /**
- * HibernateDao Test.
+ * HibernateDao Test Base.
  *
  * @author Janusz Swó³
  */
+@Ignore
 public class HibernateDAOTest extends AbstractDAOTest {
 
   @Override
@@ -63,12 +67,14 @@ public class HibernateDAOTest extends AbstractDAOTest {
       ((HibernateDAO) dao).getSessionFactory();
     */
   }
-
+  
+  /*
   public void testPacjent() throws IOException {
    
 	System.out.println( "    Canonical application path : " + new File(".").getCanonicalPath() );
+	System.out.println( "    'password' in MD5          : " + Md5HashCode.getMd5HashCode("password") );
     beforeAssertions();
-    /*
+    
     // ...
     List pacjenci = dao.getAllPacjent();
     List kasy     = dao.getAllKasach();
@@ -79,8 +85,7 @@ public class HibernateDAOTest extends AbstractDAOTest {
     //
     List rodzajeBadan    = dao.getAllRodzbad();
     List rodzajeLeczenia = dao.getAllRodzlecz();
-    */
-    /*
+    
     RodzbadJPanel rodzbadPanel = new RodzbadJPanel( dao );
     RodzbadJDialog rodzbadDialog = 
       new RodzbadJDialog( new java.awt.Frame(), true, rodzbadPanel );
@@ -90,8 +95,7 @@ public class HibernateDAOTest extends AbstractDAOTest {
     RodzleczJDialog rodzleczDialog = 
       new RodzleczJDialog( new java.awt.Frame(), true, rodzleczPanel );
     rodzleczDialog.setVisible(true);
-    */    
-    /*
+    
     Iterator  iter = pacjenci.iterator();
     Pacjent   pacjent; 
     Przyjecie przyjecie;
@@ -115,16 +119,15 @@ public class HibernateDAOTest extends AbstractDAOTest {
       System.out.println(pacjent + " " + pacjent.getKasach() );
       
     //}
-    */ 
-    /*  
+      
     iter = kasy.iterator(); 
     Kasach kasa; 
     while ( iter.hasNext() ) {   
       kasa = (Kasach)iter.next();
       System.out.println(kasa);
     }
-    */
+    
     //afterAssertions();  
   }  
-  
+  */
 }

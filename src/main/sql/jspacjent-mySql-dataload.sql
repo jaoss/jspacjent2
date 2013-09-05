@@ -162,7 +162,8 @@ INSERT INTO rodzlecz(opis) VALUES ('Zachowawcze');
 --
 --
 INSERT INTO rodzbad(opis) VALUES ('Histopatologiczne');
-
+--
+UPDATE LEKARZ SET password ='5f4dcc3b5aa765d61d8327deb882cf99' WHERE password IS NULL;
 --
 --
 commit;

@@ -19,14 +19,15 @@ public class LoginService extends LoginServiceContext {
       this.accountRepository = accountRepository;
    }   
  
-   public void login(String accountId, String password) {	
+   public IAccount login(String accountId, String password) {	
 	   
 	  IAccount account = accountRepository.find(accountId);
 	  if (account == null) {
 		 throw new AccountNotFoundException();
 	  }
-      getState().login(this, account, password);      
-      //return account;
+      getState().login(this, account, password);  
+      
+      return account;
    }
 	
 }

@@ -7,37 +7,41 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import okl.jspacjent.dao.hibernate.HibernateDAOTest;
+
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
 
-public class LoginServiceTestNG {  
-  /*  
+public class LoginServiceTestNG extends HibernateDAOTest {  
+    
   private IAccount           account;
   private IAccountRepository accountRepository;
   private LoginService       service;
-    
-  @AfterMethod
-  public void afterMethod() {
-  }
-
-  @BeforeClass
-  public void beforeClass() {
-  }
-
-  @AfterClass
-  public void afterClass() {
-  }
-
+  	
   @BeforeMethod
   public void init() {
      account = mock(IAccount.class);
      accountRepository = mock(IAccountRepository.class);      
      when(accountRepository.find(anyString())).thenReturn(account);
      service = new LoginService(accountRepository);
+  } 
+  
+  @AfterMethod
+  public void afterMethod() {
   }
+  
+
+  @BeforeClass
+  public void beforeClass() {
+	  beforeAssertions();
+  }
+
+  @AfterClass
+  public void afterClass() {
+  }  
 
   private void willPasswordMatch(boolean value) {
      when(account.passwordMatches(anyString())).thenReturn(value);
@@ -49,7 +53,8 @@ public class LoginServiceTestNG {
      service.login("brett", "password");
      verify(account, times(1)).setLoggedIn(true);
   }
-
+  
+  /*
   @Test
   public void itShouldSetAccountToRevokedAfterThreeFailedLoginAttempts() {
      willPasswordMatch(false); 

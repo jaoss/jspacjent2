@@ -18,6 +18,8 @@ public class Lekarz implements java.io.Serializable, IAccount {
   private String imie;
   private String nazwisko = "?";
   private String uwagi;
+  private String email;
+  private String password;
   
   private Set    przyjecies = new HashSet(0);
 
@@ -36,7 +38,7 @@ public class Lekarz implements java.io.Serializable, IAccount {
     this.idLekarz = idLekarz;
     this.nazwisko = nazwisko;
   }
-  /** full constructor */
+  /** constructor */
   public Lekarz(long idLekarz, String imie, String nazwisko,
       String uwagi, Set przyjecies) {
     this.idLekarz = idLekarz;
@@ -54,6 +56,7 @@ public class Lekarz implements java.io.Serializable, IAccount {
   public void setIdLekarz(long idLekarz) {
     this.idLekarz = idLekarz;
   }
+  
   public String getImie() {
     return this.imie;
   }
@@ -68,6 +71,7 @@ public class Lekarz implements java.io.Serializable, IAccount {
   public void setNazwisko(String nazwisko) {
     this.nazwisko = nazwisko;
   }
+  
   public String getUwagi() {
     return this.uwagi;
   }
@@ -75,6 +79,23 @@ public class Lekarz implements java.io.Serializable, IAccount {
   public void setUwagi(String uwagi) {
     this.uwagi = uwagi;
   }
+  
+  public String getPassword() {
+		return password;
+  }
+	
+  public void setPassword(String password) {
+		this.password = password;
+  }
+	
+  public String getEmail() {
+		return email;
+  } 
+	
+  public void setEmail(String email) {
+		this.email = email;
+  }
+	
   public Set getPrzyjecies() {
     return this.przyjecies;
   }
@@ -137,6 +158,6 @@ public class Lekarz implements java.io.Serializable, IAccount {
 	public boolean passwordMatches(String candidate) {
 		// TODO Auto-generated method stub
 		return false;
-	}
+	}	
 
 }

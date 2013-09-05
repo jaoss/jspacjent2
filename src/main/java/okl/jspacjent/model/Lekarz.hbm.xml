@@ -30,14 +30,29 @@
         name="NAZWISKO"
         length="25"
         not-null="true" />
-    </property>
+    </property>  
     <property
       name="uwagi"
       type="string">
       <column
         name="UWAGI"
         length="20" />
+    </property>  
+    <property
+      name="email"
+      type="string">
+      <column
+        name="EMAIL"
+        length="100" />
     </property>
+    <property
+      name="password"
+      type="string">
+      <column
+        name="PASSWORD"
+        length="32" />
+    </property>   
+    
     <set
       name="przyjecies"
       inverse="true">
@@ -46,5 +61,6 @@
       </key>
       <one-to-many class="okl.jspacjent.model.Przyjecie" />
     </set>
+    
   </class>
 </hibernate-mapping>
