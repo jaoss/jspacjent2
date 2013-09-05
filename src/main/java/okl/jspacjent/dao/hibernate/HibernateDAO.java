@@ -2,15 +2,16 @@ package okl.jspacjent.dao.hibernate;
 
 import java.util.*;
 import okl.jspacjent.model.*;
+import okl.jspacjent.services.loginservice.IAccount;
 import org.hibernate.*;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
  * @author janusz.swol@lot.pl
  *
- * Implementacja Hibernate Dao dla naszej aplikacji.
+ * Implementacja DAO dla naszej aplikacji. 
  */
-public class HibernateDAO implements okl.jspacjent.dao.DAO {
+public class HibernateDAO implements okl.jspacjent.dao.DAO  {
 
   // Fields
   
@@ -586,6 +587,14 @@ public class HibernateDAO implements okl.jspacjent.dao.DAO {
   /** Usuwa leczenie z bazy  */
   public void deleteLeczenie( Leczenie leczenie ) {
     getHibernateTemplate().delete( leczenie );    
-  };  
+  }
+  
+  // ---------------------------------------------------------------------------
+
+	@Override
+	public IAccount find(String accountId) {
+		// TODO Auto-generated method stub
+		return null;
+	};  
 
 }

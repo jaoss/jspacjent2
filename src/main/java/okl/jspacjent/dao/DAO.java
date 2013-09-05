@@ -3,16 +3,15 @@ package okl.jspacjent.dao;
 
 import java.util.*;
 import okl.jspacjent.model.*;
+import okl.jspacjent.services.loginservice.IAccountRepository;
 
 /**
- * Interfejs definiuj¹cy wszystkie metody dostêpu do danych 
- *  i metody biznesowe w naszej aplikacji.
- *
- * Implementation: <br/>
+ * Interfejs definiuj¹cy wszystkie metody dostêpu do danych w bazie SQL </br>
+ * rozszerza równie¿ interfejs IAccountRepository dla us³ugi logowania </br> 
  *
  * @author janusz.swol@gmail.pl
  */
-public interface DAO {
+public interface DAO extends IAccountRepository {
   
   /** zamkniêcie po³¹czenia z baz¹ danych i zakoñczenie pracy */
   void closeDatabaseConnection();
@@ -106,7 +105,7 @@ public interface DAO {
   void updateLekarz( Lekarz lekarz );
   
   /** Usuwa lekarza z bazy  */
-  void deleteLekarz( Lekarz lekarz );    
+  void deleteLekarz( Lekarz lekarz );
   
   // RODZAJE BADAÑ
   

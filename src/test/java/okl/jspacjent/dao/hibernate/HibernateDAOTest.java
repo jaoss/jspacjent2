@@ -21,8 +21,7 @@ public class HibernateDAOTest extends AbstractDAOTest {
   @Override
   protected DAO createDao(){	  
     System.out.println(" ...Config locations : " + getConfigLocations()[0]);
-    applicationContext =
-      new ClassPathXmlApplicationContext( getConfigLocations() );
+    applicationContext = new ClassPathXmlApplicationContext( getConfigLocations() );
     if (applicationContext != null ) {
       System.out.println(" ...Application context : " + applicationContext.getDisplayName() );
     }
