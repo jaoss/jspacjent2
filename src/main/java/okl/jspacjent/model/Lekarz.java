@@ -143,9 +143,17 @@ public class Lekarz implements java.io.Serializable, IAccount {
     String tmp = "";
     //tmp += (new Long(this.getIdLekarz())).toString() + " , " ;
     tmp += this.getNazwisko() + " " ;    
-    tmp += this.getImie()     + "   " ;    
-    tmp += this.getUwagi()    + " log in: " ;
-    tmp += this.isLoggedIn()  + " revoked: " ;
+    tmp += this.getImie()     + "  " ;    
+    tmp += this.getUwagi()    + "" ;    
+    return tmp; 
+  }
+  
+  /** */
+  public String toStringFull() {
+    String tmp = "";
+    tmp += (new Long(this.getIdLekarz())).toString() + ", " ;        
+    tmp += this.toString()    + " ;  log in: " ;
+    tmp += this.isLoggedIn()  + " , revoked: " ;
     tmp += this.isRevoked()   + "";
     return tmp; 
   }

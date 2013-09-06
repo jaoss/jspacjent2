@@ -39,7 +39,8 @@
 		<projectVersion>0.0.0</projectVersion>
     -->
 		<projectScope>compile</projectScope>
-		<surefire.version>2.13</surefire.version>		
+		<surefire.version>2.13</surefire.version>	
+		<project.build.sourceEncoding>Cp1250</project.build.sourceEncoding>	
 			
 	</properties>
 
@@ -194,44 +195,52 @@
 	</dependencies>
 
 	<build>
-	
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>			 
+	 
+		<resources>	    
+		  		 
       <resource> 
         <directory>src/main/java</directory> 
         <includes> 
           <include>**/*.xml</include> 
           <include>**/*.properties</include>
         </includes> 
-      </resource>				
+      </resource>		   
+		     
+			<resource>			 
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes> 
+          <include>**/*.xml</include> 
+          <include>**/*.properties</include>
+        </includes> 
+			</resource>
+			<resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>**/*.xml</exclude>
+          <exclude>**/*.properties</exclude>
+        </excludes>
+      </resource>
+           		
 		</resources>
-
+    	
 
 		<plugins>      
 		
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>		
-        <version>2.6</version>		
-				<executions>
-				  <execution>
-					<id>copy-resources</id>
-					<!-- here the phase you need -->
-					<phase>validate</phase>
-					<goals>
-						<goal>copy-resources</goal>
-					</goals>
-					<configuration>
-						<outputDirectory>${project.build.directory}/classes</outputDirectory>						 
-						<resources>
-						<!--	-->	
-						</resources>
-						<encoding>UTF-8</encoding>						
-					</configuration>
-				  </execution>
-				</executions>
+        <version>2.6</version>        
+        <configuration>
+          <nonFilteredFileExtensions>
+            <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+            <nonFilteredFileExtension>jar</nonFilteredFileExtension>
+            <nonFilteredFileExtension>gif</nonFilteredFileExtension>
+            <nonFilteredFileExtension>jpg</nonFilteredFileExtension>
+            <nonFilteredFileExtension>css</nonFilteredFileExtension>
+          </nonFilteredFileExtensions>
+          <encoding>UTF-8</encoding>
+        </configuration>				
 			</plugin>
 			
 			<!--@author : Marcin Zajączkowski

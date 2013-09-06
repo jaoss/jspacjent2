@@ -260,7 +260,7 @@ public class JPacjentMDIApplication extends javax.swing.JFrame {
       nowepMenuItem.setEnabled( false ); 
       edycjapMenuItem.setEnabled( false ); 
     }
-    System.out.println(" ...Components updated");
+    //System.out.println(" ...Components updated");
   }
   
   protected final void setUpLookAndFeel() throws Exception {    
