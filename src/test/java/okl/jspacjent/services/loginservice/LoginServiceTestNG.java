@@ -1,32 +1,35 @@
 package okl.jspacjent.services.loginservice;
 
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import java.io.IOException;
 
 import okl.jspacjent.dao.hibernate.HibernateDAOTest;
+import okl.jspacjent.services.loginservice.exceptions.AccountNotFoundException;
+import okl.jspacjent.services.loginservice.exceptions.AccountRevokedException;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
+/** 
+ * LoginService tests on data from fake database </br> 
+ *   HSQL, from text file  ./jspacjent2/src/test/resources/fake-database-hsql/jspacjent 
+ */
 public class LoginServiceTestNG extends HibernateDAOTest {  
     
+  static Logger log = Logger.getLogger( LoginServiceTestNG.class.getName() );	
+	
   private IAccount           account;
   private IAccountRepository accountRepository;
   private LoginService       service;
   	
   @BeforeMethod
-  public void init() {
-     account = mock(IAccount.class);
-     accountRepository = mock(IAccountRepository.class);      
-     when(accountRepository.find(anyString())).thenReturn(account);
-     service = new LoginService(accountRepository);
+  public void init() {     
+	 accountRepository = this.getDao();     
+	 service           = new LoginService(accountRepository);   
   } 
   
   @AfterMethod
@@ -35,36 +38,74 @@ public class LoginServiceTestNG extends HibernateDAOTest {
   
 
   @BeforeClass
-  public void beforeClass() {
+  public void beforeClass() throws IOException {	  
 	  beforeAssertions();
+	  log.setLevel(Level.ALL);	  	    
+	  /*
+	  List lekarze  = getDao().getAllLekarz();
+	  Iterator iter = lekarze.iterator(); 
+	  Lekarz lekarz; 
+	  while ( iter.hasNext() ) {   
+	      lekarz = (Lekarz)iter.next();
+	      log.info(lekarz);
+	 }
+	 */	 
   }
 
   @AfterClass
   public void afterClass() {
+	  afterAssertions();
   }  
-
-  private void willPasswordMatch(boolean value) {
-     when(account.passwordMatches(anyString())).thenReturn(value);
-  }
-
+  
   @Test
-  public void itShouldSetAccountToLoggedInWhenPasswordMatches() {
-     willPasswordMatch(true);
-     service.login("brett", "password");
-     verify(account, times(1)).setLoggedIn(true);
+  public void itShouldFindAccountWhenAccountIdAndPasswordMatches() {  
+	 account = service.login("moss", "password");
+	 assertTrue(account.isLoggedIn());
+	 assertFalse(account.isRevoked());
+	 log.info(account); 
+     account = service.login("zi¹bek", "password");
+     assertTrue(account.isLoggedIn());
+     assertFalse(account.isRevoked());
+     log.info(account);
+     account = service.login("góra", "password");
+     assertTrue(account.isLoggedIn());
+     assertFalse(account.isRevoked());
+     log.info(account);
   }
   
-  /*
+  @Test(expectedExceptions = AccountNotFoundException.class)
+  public void ItShouldThrowExceptionIfAccountNotFound() {     
+     account = service.login("schuchert", "password");
+  }
+  
+  @Test 
+  public void itShouldNotSetAccountLoggedInIfPasswordDoesNotMatch() {     
+     account = service.login("moss", "word");     
+     assertFalse(account.isLoggedIn());
+     log.info(account);
+  }
+  
+  
   @Test
-  public void itShouldSetAccountToRevokedAfterThreeFailedLoginAttempts() {
-     willPasswordMatch(false); 
+  public void itShouldSetAccountToRevokedAfterThreeFailedLoginAttempts() {    
      for (int i = 0; i < 3; i++) {
-        service.login("brett", "password");
+        account = service.login("moss", "word");
      }
-     verify(account, times(1)).setRevoked(true);
-     verify(account, times(1)).setLoggedIn(false);
+     assertTrue(account.isRevoked());
+     assertFalse(account.isLoggedIn());
+     log.info(account);
   } 
   
+  @Test(expectedExceptions = AccountRevokedException.class)
+  public void ItShouldNotBePossibleToLogIntoRevokedAccount() {
+	for (int i = 0; i < 3; i++) {
+	   account = service.login("moss", "word");
+	}
+	assertTrue(account.isRevoked());
+	account = service.login(account, "password");
+	log.info(account);
+  }
+  /*
   @Test
   public void itShouldNotSetAccountLoggedInIfPasswordDoesNotMatch() {
      willPasswordMatch(false);

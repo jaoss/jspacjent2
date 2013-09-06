@@ -9,6 +9,12 @@ public class AwaitingFirstLoginAttempt extends LoginServiceState {
 	  super();	  
 	}
 	
+	public AwaitingFirstLoginAttempt( String previousAccountId, int failedAttempts ) {
+		super();	
+	    this.previousAccountId = previousAccountId;
+	    this.failedAttempts    = failedAttempts;		    
+	}
+	
 	@Override
 	public void handleIncorrectPassword(LoginServiceContext context, IAccount account, String password) {
 	  context.setState(new AfterFirstFailedLoginAttempt(account.getId()));		

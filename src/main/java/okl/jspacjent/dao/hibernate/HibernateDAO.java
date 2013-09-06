@@ -7,7 +7,7 @@ import org.hibernate.*;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
- * @author janusz.swol@lot.pl
+ * @author janusz.swol@gmail.com
  *
  * Implementacja DAO dla naszej aplikacji. 
  */
@@ -314,6 +314,36 @@ public class HibernateDAO implements okl.jspacjent.dao.DAO  {
     return lekarze;    
   }
   
+  /*
+  
+  public List getPacjentByNazwisko( String nazwisko ) {
+    List pacjenci =      
+      getHibernateTemplate().findByNamedQueryAndNamedParam(
+        "getPacjentByNazwisko",
+        new String[] {"nazwisko"},
+        new Object[] { nazwisko }
+      );
+    return pacjenci;
+  };
+   */
+  /** Zwraca lekarzy po nazwisku - z wszystkich zapisanych w bazie   */
+  public List getLekarzByNazwisko( String nazwisko ) {	 
+    List lekarze =
+    	getHibernateTemplate().findByNamedQueryAndNamedParam(
+    		       "getLekarzByNazwisko",
+    		        new String[] {"nazwisko"},
+    		        new Object[] { nazwisko }
+    		      );    
+    return lekarze;    
+  }
+  
+  /** Zwraca lekarzy po accountId, który w naszym przypadku jest nazwiskiem */
+  public List getLekarzByAccountId( String accountId ) {
+	String nazwisko = accountId;
+    List   lekarze  = getLekarzByNazwisko( nazwisko );    	  
+    return lekarze;    
+  }
+  
   /** Zapisuje lekarzy do bazy  */
   public void updateLekarzList( List lekarze ) {
     getHibernateTemplate().saveOrUpdateAll( lekarze );
@@ -591,10 +621,19 @@ public class HibernateDAO implements okl.jspacjent.dao.DAO  {
   
   // ---------------------------------------------------------------------------
 
-	@Override
-	public IAccount find(String accountId) {
-		// TODO Auto-generated method stub
-		return null;
-	};  
+  /**  from IAccountRepository */
+  @Override
+  public IAccount find(String accountId) {
+	IAccount account  = null;	
+	List     lekarze  = getLekarzByAccountId( accountId );
+	// 
+	if ( lekarze != null ) {
+	   if ( !lekarze.isEmpty() ) {
+		  // na razie bierzemy pierwszego z brzegu o tym accountId
+		  account = (Lekarz)lekarze.get(0);
+	   }
+	} 
+	return account;
+  };  
 
 }

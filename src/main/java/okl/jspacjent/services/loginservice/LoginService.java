@@ -19,15 +19,26 @@ public class LoginService extends LoginServiceContext {
       this.accountRepository = accountRepository;
    }   
  
-   public IAccount login(String accountId, String password) {	
-	   
+   /** logowanie na podstawie identyfikatora i has³a </br>
+    *  zwracana jest instancja :IAccount w odpowiednim stanie 
+    *   - loggedIn lub revoked */
+   public IAccount login(String accountId, String password) {	   
 	  IAccount account = accountRepository.find(accountId);
 	  if (account == null) {
 		 throw new AccountNotFoundException();
 	  }
-      getState().login(this, account, password);  
-      
+      getState().login(this, account, password);      
       return account;
    }
-	
+   
+   /** logowanie na podstawie istniej¹cej instancji :IAccount i has³a </br>
+    *  zwracana jest wejœciowa instancja :IAccount w odpowiednim stanie 
+    *   - loggedIn lub revoked */
+   public IAccount login(IAccount account, String password) {		  
+	  if (account == null) {
+		 throw new AccountNotFoundException();
+	  }
+      getState().login(this, account, password);       
+      return account;
+   }	
 }

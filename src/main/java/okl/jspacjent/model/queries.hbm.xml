@@ -197,6 +197,16 @@
       where ( prz.ksg like :ksg )       
     ]]>
   </query>
+  
+  <query name="getLekarzByNazwisko">
+    <![CDATA[      
+      from Lekarz p       
+      where 
+        upper( p.nazwisko ) like upper( :nazwisko )
+      order by 
+        p.nazwisko, p.imie  
+    ]]>
+  </query> 
       
   
 </hibernate-mapping>

@@ -1,11 +1,8 @@
 package okl.jspacjent.dao.hibernate;
 
-import java.io.File;
-import java.io.IOException;
-
 import okl.jspacjent.dao.*;
-import okl.jspacjent.utility.Md5HashCode;
 
+import org.apache.log4j.Logger;
 import org.junit.Ignore;
 import org.springframework.context.support.*;
 
@@ -16,6 +13,8 @@ import org.springframework.context.support.*;
  */
 @Ignore
 public class HibernateDAOTest extends AbstractDAOTest {
+	
+  static Logger log = Logger.getLogger( HibernateDAOTest.class.getName() );
 
   @Override
   protected String[] getConfigLocations() {
@@ -24,14 +23,8 @@ public class HibernateDAOTest extends AbstractDAOTest {
 
   @Override
   protected DAO createDao(){	  
-    System.out.println(" ...Config locations : " + getConfigLocations()[0]);
-    applicationContext = new ClassPathXmlApplicationContext( getConfigLocations() );
-    if (applicationContext != null ) {
-      System.out.println(" ...Application context : " + applicationContext.getDisplayName() );
-    }
-    else {
-      System.out.println(" ...Application context not created" );
-    }
+    log.info(" ...Config locations : " + getConfigLocations()[0]);
+    applicationContext = new ClassPathXmlApplicationContext( getConfigLocations() );    
     DAO dao = (HibernateDAO)applicationContext.getBean("dao");
     return dao;
   }
@@ -66,68 +59,6 @@ public class HibernateDAOTest extends AbstractDAOTest {
     SessionFactory sessionFactory =
       ((HibernateDAO) dao).getSessionFactory();
     */
-  }
-  
-  /*
-  public void testPacjent() throws IOException {
-   
-	System.out.println( "    Canonical application path : " + new File(".").getCanonicalPath() );
-	System.out.println( "    'password' in MD5          : " + Md5HashCode.getMd5HashCode("password") );
-    beforeAssertions();
-    
-    // ...
-    List pacjenci = dao.getAllPacjent();
-    List kasy     = dao.getAllKasach();
-    //
-    List lekarze     = dao.getAllLekarz();
-    List skierowania = dao.getAllSkierowAsStrings();
-    List rozpoznania = dao.getAllRozpoznanieAsStrings();
-    //
-    List rodzajeBadan    = dao.getAllRodzbad();
-    List rodzajeLeczenia = dao.getAllRodzlecz();
-    
-    RodzbadJPanel rodzbadPanel = new RodzbadJPanel( dao );
-    RodzbadJDialog rodzbadDialog = 
-      new RodzbadJDialog( new java.awt.Frame(), true, rodzbadPanel );
-    rodzbadDialog.setVisible(true);
-    
-    RodzleczJPanel rodzleczPanel = new RodzleczJPanel( dao );
-    RodzleczJDialog rodzleczDialog = 
-      new RodzleczJDialog( new java.awt.Frame(), true, rodzleczPanel );
-    rodzleczDialog.setVisible(true);
-    
-    Iterator  iter = pacjenci.iterator();
-    Pacjent   pacjent; 
-    Przyjecie przyjecie;
-    
-    //while ( iter.hasNext() ) { 
-      
-      pacjent = (Pacjent)iter.next();
-      Set przyjecia = pacjent.getPrzyjecies();
-      Iterator iter1 = pacjent.getPrzyjecies().iterator();
-      przyjecie = (Przyjecie)iter1.next();
-      
-      System.out.println(pacjent + " " + pacjent.getKasach() );
-      
-      PacjentJPanel pacjentPanel = new PacjentJPanel(pacjent, kasy );
-      PrzyjecieJPanel przyjeciePanel = 
-        new PrzyjecieJPanel(przyjecie, lekarze, skierowania, rozpoznania);
-      PacjentDialogUI pacjentDialog =
-        new PacjentDialogUI(null, true, pacjentPanel, przyjeciePanel);      
-      pacjentDialog.setVisible(true);           
-      
-      System.out.println(pacjent + " " + pacjent.getKasach() );
-      
-    //}
-      
-    iter = kasy.iterator(); 
-    Kasach kasa; 
-    while ( iter.hasNext() ) {   
-      kasa = (Kasach)iter.next();
-      System.out.println(kasa);
-    }
-    
-    //afterAssertions();  
   }  
-  */
+  
 }

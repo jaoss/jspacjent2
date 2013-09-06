@@ -147,9 +147,9 @@
         <prop key="hibernate.cache.use_minimal_puts">false</prop>
         <prop key="hibernate.cache.use_query_cache">false</prop>
         <prop key="hibernate.max_fetch_depth">3</prop>
-        <prop key="hibernate.show_sql">true</prop>
-        <prop key="hibernate.format_sql">true</prop>
-        <prop key="hibernate.use_sql_comments">true</prop>
+        <prop key="hibernate.show_sql">false</prop>
+        <prop key="hibernate.format_sql">false</prop>
+        <prop key="hibernate.use_sql_comments">false</prop>
       </props>
     </property>
     <property name="dataSource">
