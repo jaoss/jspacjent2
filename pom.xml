@@ -41,6 +41,13 @@
 		<projectScope>compile</projectScope>
 		<surefire.version>2.13</surefire.version>	
 		<project.build.sourceEncoding>Cp1250</project.build.sourceEncoding>	
+		<fake-hsql-file>
+		    ${project.build.testSourceDirectory}/resources/${test.databaseFile}
+		</fake-hsql-file>
+		<fake-test-hsql-file>		    
+		    ${project.build.testOutputDirectory}/${test.databaseFile}
+		</fake-test-hsql-file>
+		<projectOwner>Janusz Swół</projectOwner>
 			
 	</properties>
 
@@ -195,27 +202,40 @@
 	</dependencies>
 
 	<build>
+	    
+	  <filters>
+       <filter>${basedir}/src/test/resources/test.properties</filter>
+       <filter>${basedir}/src/main/resources/application.properties</filter>
+    </filters>
 	 
 		<resources>	    
 		  		 
+		  <!-- kopiowanie mapujących plików Hibernate z pakietu  okl.jspacjent.model -->  
       <resource> 
-        <directory>src/main/java</directory> 
+        <directory>${basedir}/src/main/java</directory> 
         <includes> 
-          <include>**/*.xml</include> 
-          <include>**/*.properties</include>
+          <include>**/*.xml</include>           
         </includes> 
-      </resource>		   
-		     
-			<resource>			 
-				<directory>src/main/resources</directory>
+      </resource>		
+         
+		  <!-- 
+		  Kopiowanie zasobów ale tak aby :
+		  przenieść pliki .xml        w kodowaniu UTF-8      filtrując
+		            pliki .properties w kodowaniu ISO-8859-1 filtrując 
+		  pozostałe pliki bez filtrowania          
+		  kopiowanie .properties w specjalnym wywołaniu maven-resources-plugin "filter-properties-files" 
+		  -->   
+			<resource>		
+			   <!-- kopiowanie tylko  .xml z filtrowaniem-->  	 
+				<directory>${basedir}/src/main/resources</directory>
 				<filtering>true</filtering>
 				<includes> 
-          <include>**/*.xml</include> 
-          <include>**/*.properties</include>
+          <include>**/*.xml</include>          
         </includes> 
 			</resource>
 			<resource>
-        <directory>src/main/resources</directory>
+			  <!-- kopiowanie pozostałych oprócz .xml i .properties bez filtrowania -->    
+        <directory>${basedir}/src/main/resources</directory>
         <filtering>false</filtering>
         <excludes>
           <exclude>**/*.xml</exclude>
@@ -224,6 +244,26 @@
       </resource>
            		
 		</resources>
+		
+		<testResources>
+		  <!-- Kopiowanie zasobów testowych jak powyżej -->     
+      <testResource>
+        <directory>${basedir}/src/test/resources</directory>
+        <filtering>true</filtering>
+        <includes> 
+          <include>**/*.xml</include>          
+        </includes> 
+      </testResource>
+      <testResource>
+        <directory>${basedir}/src/test/resources</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>**/*.xml</exclude>
+          <exclude>**/*.properties</exclude>
+        </excludes>
+      </testResource>
+      
+    </testResources>
     	
 
 		<plugins>      
@@ -240,7 +280,63 @@
             <nonFilteredFileExtension>css</nonFilteredFileExtension>
           </nonFilteredFileExtensions>
           <encoding>UTF-8</encoding>
-        </configuration>				
+        </configuration>
+        
+        <executions>
+            
+		      <execution>
+		        <!-- 
+		        Jednak taka sztuczka aby zapisać właściwość w jednym pliku .properties
+		        albo w pliku .pom z polskimi znakami i prawidłowo przefiltrować ją do drugiego pliku
+		        .properties nie działa?
+		          -->  
+		        <id>filter-properties-files</id>
+		        <phase>process-resources</phase>
+		        <goals>
+		          <goal>copy-resources</goal>
+		        </goals>
+		        <configuration>
+		          <!-- java properties files are encoded in ISO-8859-1 so when 
+		               filtering those files we stick with that encoding. -->
+		          <encoding>ISO-8859-1</encoding>
+		          <outputDirectory>${basedir}/target/classes</outputDirectory>		           
+		          <resources>		            
+		            <resource>
+		              <filtering>true</filtering>
+		              <directory>${basedir}/src/main/resources</directory>
+		              <includes>
+		                <include>**/*.properties</include>
+		              </includes>
+		            </resource>		            
+		          </resources>		         
+		        </configuration>
+		      </execution>
+		      
+		      <execution>
+		        <id>filter-test-properties-files</id>
+		        <phase>process-test-resources</phase>
+		        <goals>
+		          <goal>copy-resources</goal>
+		        </goals>
+		        <configuration>
+		          <!-- java properties files are encoded in ISO-8859-1 so when 
+		               filtering those files we stick with that encoding. -->
+		          <encoding>ISO-8859-1</encoding>		          
+		          <outputDirectory>${basedir}/target/test-classes</outputDirectory>		          
+		          <resources>
+		            <resource>
+		              <filtering>true</filtering>
+		              <directory>${basedir}/src/test/resources</directory>
+		              <includes>
+		                <include>**/*.properties</include>
+		              </includes>
+		            </resource>
+		          </resources>
+		        </configuration>
+		      </execution>
+		      
+		     </executions>  
+      				
 			</plugin>
 			
 			<!--@author : Marcin Zajączkowski
