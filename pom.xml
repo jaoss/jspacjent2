@@ -47,7 +47,8 @@
 		<fake-test-hsql-file>		    
 		    ${project.build.testOutputDirectory}/${test.databaseFile}
 		</fake-test-hsql-file>
-		<projectOwner>Janusz Swół</projectOwner>
+		<!-- do testów filtrowania z zachowaniem odpowiedniego kodowania -->
+		<projectOwner>Janusz Swół - (POM)</projectOwner>
 			
 	</properties>
 
@@ -288,7 +289,7 @@
 		        <!-- 
 		        Jednak taka sztuczka aby zapisać właściwość w jednym pliku .properties
 		        albo w pliku .pom z polskimi znakami i prawidłowo przefiltrować ją do drugiego pliku
-		        .properties nie działa?
+		        .properties nie działa?     do pliku .xml działa - 7.09.2013 18:10
 		          -->  
 		        <id>filter-properties-files</id>
 		        <phase>process-resources</phase>
@@ -432,6 +433,14 @@
       
 		</plugins>
 		
+		<extensions>
+		  <extension>
+			  <groupId>org.apache.maven.wagon</groupId>
+		  	<artifactId>wagon-webdav-jackrabbit</artifactId>
+			  <version>1.0-beta-7</version>
+		  </extension>
+	  </extensions>
+		
 	</build>
 	
 	<scm>
@@ -511,6 +520,19 @@
 		 </profile>
 	 
 	 </profiles>
+	 
+	 
+	 <distributionManagement>
+	 <!-- The “dav” prefix is added before the HTTP protocol, it means deploy your site via WebDAV mechanism.
+	      Alternately, you can replace it with “scp” if your server is supported “scp” access.
+        Tell Maven to use “wagon-webdav-jackrabbit” extension for deployment. --> 
+			<repository>
+			  <id>cloudbees.jasox.repository</id>
+			  <name>CloudBees Jasox Repository</name>
+			  <url>dav:https://repository-jasox.forge.cloudbees.com/private/</url>
+			</repository>
+			
+   </distributionManagement> 
 	 
 	 		
 </project>

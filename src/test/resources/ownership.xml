@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ownerships> 
+     
+  <!-- dla testowania problemu filtrowania z zachowaniem odpowiedniego kodowania -->
+  <ownership
+    id="${project.name}"
+    version="${project.version}">
+    <!-- this property is set from property read from other property file -->
+    <property name="appDatabaseOwner">
+      <value>${app.databaseOwner}</value>
+    </property>
+    <!-- this property is set from property read from other property file -->
+    <property name="testDatabaseOwner">
+      <value>${test.databaseOwner}</value>
+    </property>
+    <!-- this property is set from .POM property -->
+    <property name="projectOwner">
+      <value>${projectOwner}</value>      
+    </property>    
+  </ownership>
+
+</ownerships>
