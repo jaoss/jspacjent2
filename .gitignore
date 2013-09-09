@@ -2,13 +2,13 @@
 # ignoruj w projekcie JPacjent2
 #---------------------------------------
 
-# katalogi
+# podkatalogi katalogu głównego
 
 .settings/
 target/
 test-output/
 
-#pliki
+# pliki w głównym katalogu
 
 # /.gitignore
 /.springBeans
@@ -19,4 +19,32 @@ test-output/
 /manifest
 /nb-configuration.xml
 /nbactions.xml
+
+# pliki w każdym katalogu
+
+*.doc#
+*.log
+*.ldb
+
+#---------------------------------------
+# Compiled source #
+#
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+#
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
 
