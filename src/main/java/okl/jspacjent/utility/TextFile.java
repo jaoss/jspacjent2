@@ -13,15 +13,13 @@ import java.io.*;
 import java.util.*;
 
 /**
-  * Tools to read and write files as single strings,
-  *  and treating a file as an ArrayList.
+  * Tools to read and write files as single strings, and treating a file as an ArrayList.
   */
 public class TextFile extends ArrayList {
   /** */
   public static String read(String fileName) throws IOException {
-    StringBuffer sb = new StringBuffer();
-    BufferedReader in =
-      new BufferedReader( new FileReader( fileName ) );
+    StringBuffer   sb = new StringBuffer();
+    BufferedReader in = new BufferedReader(new FileReader( fileName ));
     String s;
     while( ( s = in.readLine() ) != null ) {      
       sb.append(s);
@@ -34,9 +32,8 @@ public class TextFile extends ArrayList {
   /** */
   public static String read(String fileName, String charsetName) 
   throws IOException, UnsupportedEncodingException {
-    StringBuffer sb = new StringBuffer();
-    BufferedReader in =
-      new BufferedReader( new FileReader( fileName ) );
+    StringBuffer   sb = new StringBuffer();
+    BufferedReader in = new BufferedReader(new FileReader( fileName ));
     String s;
     while( (s = in.readLine()) != null ) {
       s = new String( s.getBytes(), charsetName );
@@ -50,8 +47,7 @@ public class TextFile extends ArrayList {
   /** */
   public static void write(String fileName, String text)
   throws IOException {
-    PrintWriter out = new PrintWriter(
-      new BufferedWriter( new FileWriter( fileName ) ) );
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter( fileName )));
     out.print(text);
     out.close();
   }
@@ -63,19 +59,20 @@ public class TextFile extends ArrayList {
   
   /** */
   public void write(String fileName) throws IOException {
-    PrintWriter out = new PrintWriter(
-      new BufferedWriter( new FileWriter( fileName ) ) );
-    for( int i = 0; i < size(); i++ ) {
-      out.println( get(i) );
+    PrintWriter out = new PrintWriter( new BufferedWriter(new FileWriter( fileName )));
+    for( int i = 0; i < this.size(); i++ ) {
+      out.println( this.get(i) );
     }
     out.close();
+  }  
+  
+  public int getSize() {
+     return this.size();
   }
   
-  // Simple test:
-  public static void main(String[] args) throws Exception {
-    String file = TextFile.read("TextFile.java");
-    TextFile.write("test.txt", file);
-    TextFile text = new TextFile("test.txt");
-    text.write("test2.txt");
+  public String getAt( int i ) {
+     return (String)this.get(i);
   }
-} ///:~
+   
+} 
+///:~
