@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * 
  */
 package okl.jspacjent.utility;
 
@@ -46,6 +45,7 @@ public class TextFileTest {
   /** */
   @Test
   public void write_czynnosci() throws IOException {
+    /*
     System.out.println("czynnoœci - usage");
     String line;
     String prefix = "INSERT INTO `med_procedure` ( `data`, `pesel`, `symbol_kasa`,`primary_data`, `additional_data`,  `symbol_proc_type`, `no_adm`, `surcharge`, `amount`, `description`) VALUES (";
@@ -67,6 +67,7 @@ public class TextFileTest {
       suffix = "";
     }
     out.close();
+    */
   }  
   
 }

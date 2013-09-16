@@ -1,4 +1,30 @@
-Project JSPacjent2
-authors :
- jaoss - Jan Osowski <jan.osowski@gmail.com>
- jasox - Janusz Janowski <jasox@gazeta.pl>
+Application : JSPacjent2
+     Author : Janusz Swół <janusz.swol@gmail.com>
+
+Program ten jest studium przypadku, który ma za cel ilustrację użycia 
+idei, technik, narzędzi do analizy, projektowania i tworzenia oprogramowania.
+
+Ilustruje użycie : 
+ - metodologi RUP do zbierania wymagań i analizy biznesowej problemu - 
+     plik projektu aplikacji w formacie Enterprprise Architect, oraz inne artefakty RUP 
+     znajdują się w katalogu ./project-design/
+ - Swing do konstrukcji UI - program jst typu desktop, z bazą danych na zewnętrznym serwerze ( Amazon WS )
+ - Spring i Hibernate do tworzenia warstwy dostępu do danych
+ - Wzorców GoF, a przynajmniej wzorca Strategy, Template method i State
+ - Test Driven Development, a w samym procesie testowania JUnit4, TestNG, Mockito,
+     oraz bazy Hsql w postaci pliku tekstowego ( fake-database )
+ - SQL do tworzenia schematu bazy MySQL i Hsql, oraz do wstępnego wczytania danych
+ - SCM - kod źródłowy jest przechowywany w zewnętrznym repozytorium na GitHub
+ - CI - kod jest budowany i testowny w instancji Jenkins'a na CloudBees, 
+     gdzie też znajduje się repozytorium Maven'a; jest również analizowany pod względem jakości 
+     przez lokalną instancję programu Sonar 
+ 
+Dla ilustracji współdziałania w zespole, oraz korzystania z Task Management wprowadziłem 
+   dwóch fikcyjnych deweloperów 
+   jaoss - Jan Osowski <jan.osowski@gmail.com>
+   jasox - Janusz Janowski <jasox@gazeta.pl>
+ w istocie to ja, tylko z różnych komputerów - stacjonarnego i laptopa, 
+ gdzie mam odpowiednio skonfigurowane Eclipse i NetBeans za pomocą zapisanych haseł i kluczy SSH      
+   
+ 
+ 
