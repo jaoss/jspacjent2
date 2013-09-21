@@ -4,13 +4,15 @@
 ----------------------------------------------------------------------
 Program ten jest studium przypadku, który ma za cel ilustrację użycia 
 idei, technik, narzędzi do analizy, projektowania i tworzenia oprogramowania.
+Kod nie rości sobie pretensji do kompletności i w pełni produkcyjnej jakości,
+jest przygotowany wyłącznie jako demonstracja.
 
 Ilustruje użycie : 
  - metodologi RUP do zbierania wymagań i analizy biznesowej problemu - 
      plik projektu aplikacji w formacie Enterprprise Architect, oraz inne artefakty RUP 
      znajdują się w katalogu ./project-design/
- - Swing do konstrukcji UI - program jst typu desktop, z bazą danych na 
-     zewnętrznym serwerze ( Amazon WS )
+ - Swing do konstrukcji UI - program jst typu desktop, z bazą danych MySQL na 
+     zewnętrznym serwerze
  - Spring i Hibernate do tworzenia warstwy dostępu do danych
  - Wzorców GoF, a przynajmniej wzorca Strategy, Template method i State
  - Test Driven Development, a w samym procesie testowania JUnit4, TestNG, Mockito,
@@ -18,7 +20,7 @@ Ilustruje użycie :
  - SQL - do tworzenia schematu bazy MySQL i Hsql, oraz do wstępnego wczytania danych
  - SCM - kod źródłowy jest przechowywany w zewnętrznym repozytorium na GitHub
  - CI  - kod jest budowany i testowny w instancji Jenkins'a na CloudBees, 
-     gdzie też znajduje się repozytorium Maven'a; 
+     gdzie też znajduje się repozytorium Maven'a 
  - CQ  - kod jest analizowany pod względem jakości przez lokalną instancję 
      programu Sonar który jak wiadomo integruje w jednym pakiecie programy 
      Checkstyle, PMD, FindBugs, Cobertura i Clover. 
@@ -28,8 +30,14 @@ Dla ilustracji współdziałania w zespole, oraz korzystania z Task Management w
    jaoss - Jan Osowski <jan.osowski@gmail.com>
    jasox - Janusz Janowski <jasox@gazeta.pl>
  w istocie to ja, tylko z różnych komputerów - stacjonarnego i laptopa, 
- gdzie mam odpowiednio skonfigurowane Eclipse i NetBeans za pomocą 
-   zapisanych haseł i kluczy SSH      
+ gdzie mam dostęp do repozytoriów przez odpowiednio skonfigurowane IDE - 
+ ( za pomocą zapisanych haseł i kluczy SSH )   
+ 
+ Program można uruchomić otwierając go jako projekt Mavena w Eclipse lub
+ NetBeans, na komputerze z dostępem do internetu, z otwartym portem 3306
+  - baza danych MySQL jest na serwerze Amazon WS
+ Dla porządku - główna klasa aplikacji to :
+   okl.jspacjent.guiswing.JPacjentMDIApplication  
    
  
  
