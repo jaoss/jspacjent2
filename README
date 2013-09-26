@@ -19,7 +19,7 @@ Ilustruje użycie :
      oraz bazy Hsql w postaci pliku tekstowego ( fake-database )
  - SQL - do tworzenia schematu bazy MySQL i Hsql, oraz do wstępnego wczytania danych
  - SCM - kod źródłowy jest przechowywany w zewnętrznym repozytorium na GitHub
- - CI  - kod jest budowany i testowny w instancji Jenkins'a na CloudBees, 
+ - CI  - kod jest budowany i testowany w instancji Jenkins'a na CloudBees, 
      gdzie też znajduje się repozytorium Maven'a 
  - CQ  - kod jest analizowany pod względem jakości przez lokalną instancję 
      programu Sonar który jak wiadomo integruje w jednym pakiecie programy 
