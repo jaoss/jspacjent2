@@ -11,8 +11,8 @@ public class AwaitingFirstLoginAttempt extends LoginServiceState {
 	
 	public AwaitingFirstLoginAttempt( String previousAccountId, int failedAttempts ) {
 		super();	
-	    this.previousAccountId = previousAccountId;
-	    this.failedAttempts    = failedAttempts;		    
+	  this.previousAccountId = previousAccountId;
+	  this.failedAttempts    = failedAttempts;		    
 	}
 	
 	@Override

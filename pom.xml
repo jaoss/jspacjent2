@@ -457,7 +457,9 @@
 
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <suiteXmlFile>
+              ${project.build.directory}/test-classes/testng.xml
+            </suiteXmlFile>
           </suiteXmlFiles>
 	         <!-- <groups>functest,perftest</groups> -->
         </configuration>

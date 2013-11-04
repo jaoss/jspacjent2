@@ -20,7 +20,7 @@
     id="jndiDataSource" 
     class="org.springframework.jndi.JndiObjectFactoryBean">
     <property name="jndiName">
-      <value>java:comp/env/jdbc/boxoffice</value>
+      <value>java:comp/env/jdbc/jspacjent</value>
     </property>
   </bean>
   -->
