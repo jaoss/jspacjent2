@@ -121,7 +121,9 @@
   <name>JSPacjent2</name>
   <version>0.0.1</version>
   <packaging>jar</packaging>
-
+  <description> JS Pacjent Application </description>
+  <url>http://github.com/jaoss/jspacjent2</url>
+  
   <properties>
 		<!--
     <projectGroup>pl.jasox</projectGroup>
